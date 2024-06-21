@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>wiwynn-amr</title>
+	<link rel="stylesheet" href="./style/all.min.css">
+</head>
+
+<body>
+	<div id="app" class="wrap">
+		<header-component></header-component>
+		<div class="content">
+			<left-panel></left-panel>
+			<map-panel></map-panel>
+		</div>
+	</div>
+	<script src="https://unpkg.com/vue@latest"></script>
+	<script src="./js/libs/vue3-sfc-loader.js"></script>
+	<script src="./js/libs/vue-router_4_3_2.js"></script>
+	<script>
+		const options={
+			moduleCache: {
+				vue: Vue
+			},
+			async getFile(url) {
+				const res=await fetch(url);
+				if (!res.ok)
+					throw Object.assign(new Error(res.statusText+' '+url), { res });
+				return {
+					getContentData: asBinary => asBinary? res.arrayBuffer():res.text(),
+				}
+			},
+			addStyle(textContent) {
+				const style=Object.assign(document.createElement('style'), { textContent });
+				const ref=document.head.getElementsByTagName('style')[0]||null;
+				document.head.insertBefore(style, ref);
+			},
+		}
+
+		const { loadModule }=window['vue3-sfc-loader'];
+
+		// const routes=[
+		// 	{
+		// 		path: '/',
+		// 		component: () => loadModule('./page/home.vue', options),
+		// 	},
+		// 	{
+		// 		path: '/about',
+		// 		component: () => loadModule('./page/about.vue', options),
+		// 	},
+		// ];
+		// const router=VueRouter.createRouter({
+		// 	history: VueRouter.createWebHistory(''),
+		// 	routes
+		// })
+		// const { createApp, ref, reactive, toRefs, watch }=Vue;
+		// const { createApp, ref, onMounted }=Vue;
+		const app=Vue.createApp({
+			data() {
+				return {
+				}
+			},
+			components: {
+				'header-component': Vue.defineAsyncComponent(() => loadModule('./components/HeaderComponent.vue', options)),
+				'left-panel': Vue.defineAsyncComponent(() => loadModule('./components/LeftPanel.vue', options)),
+				'map-panel': Vue.defineAsyncComponent(() => loadModule('./components/MapPanel.vue', options)),
+			},
+
+		});
+		// app.use(router)
+		app.mount('#app');
+
+	</script>
+</body>
+
+</html>
