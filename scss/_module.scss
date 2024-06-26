@@ -19,6 +19,7 @@
 }
 
 .content {
+	overflow: hidden;
 	@include d_f(flex);
 	width: 100%;
 	height: calc(100% - 60px);
@@ -34,7 +35,8 @@
 }
 
 .mappanel {
-	overflow: hidden;
+	// overflow: hidden;
+	overflow-x: auto;
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -43,22 +45,27 @@
 	&_box {
 		@include d_f(flex, center, none);
 		flex-wrap: wrap;
-		align-content: center;
+		// align-content: center;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
+		padding-top: 50px;;
+		padding-left: 50px;
 		transform-style: preserve-3d;
 		// transform: rotateX(-30deg) rotateY(-45deg);
 
 		// .mappanel_box_row
 		&_row {
 			position: relative;
-			@include d_f(flex, none, center);
-			width: 100%;
+			@include d_f(inline-flex, none, center);
+			height: 90px;
+			// width: 100%;
 			// transform-style: preserve-3d;
 		}
 
 		// .mappanel_box_canvas
 		&_canvas {
+			pointer-events: none;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -75,7 +82,7 @@
 .side {
 	position: relative;
 	// @include d_f(flex,center,center);
-	width: 60px;
+	width: 115px;
 	height: 10px;
 	transform-style: preserve-3d;
 	transform: rotateX(0deg) rotateY(0deg);
@@ -101,52 +108,26 @@
 		}
 
 		&._top {
-			background-color: #FFFFFF;
+			// background-color: #FFFFFF;
+			background-color: blue;
 			transform: rotateX(90deg) translateZ(50px);
 		}
 
 		&._left {
-			background-color: #ECECEC;
+			// background-color: #ECECEC;
+			background-color: red;
 			transform: translateZ(50px);
 		}
 
 		&._right {
-			background-color: #ECECEC;
+			// background-color: #ECECEC;
+			background-color: yellow;
 			transform: rotateY(90deg) translateZ(10px);
 		}
 
 
 
 	}
-
-
-
-
-}
-
-.side1 {
-
-	// .side1_box
-	&_box {
-		position: relative;
-		width: 100px;
-		height: 100px;
-
-		&._top {
-			background-color: #aaa;
-			transform-style: preserve-3d;
-			transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
-		}
-
-		&._left {
-			background-color: #cac;
-		}
-
-		&._right {
-			background-color: #aac;
-		}
-	}
-
 }
 
 .ball {
