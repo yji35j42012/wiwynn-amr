@@ -41,27 +41,47 @@
 
 	// .mappanel_box
 	&_box {
-		@include d_f(flex, center, center);
+		@include d_f(flex, center, none);
+		flex-wrap: wrap;
+		align-content: center;
 		width: 100%;
 		height: 100%;
 		transform-style: preserve-3d;
-		transform: rotateX(-30deg) rotateY(-45deg);
+		// transform: rotateX(-30deg) rotateY(-45deg);
+
+		// .mappanel_box_row
+		&_row {
+			position: relative;
+			@include d_f(flex, none, center);
+			width: 100%;
+			// transform-style: preserve-3d;
+		}
+
+		// .mappanel_box_canvas
+		&_canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 	}
 }
 
 .rode {
 	position: relative;
-	width: 100px;
-	height: 100px;
+	width: 10px;
+	height: 80px;
 }
 
 .side {
 	position: relative;
-	width: 100px;
-	height: 100px;
+	// @include d_f(flex,center,center);
+	width: 60px;
+	height: 10px;
 	transform-style: preserve-3d;
 	transform: rotateX(0deg) rotateY(0deg);
-	// transform: rotateX(-30deg) rotateY(-45deg);
+	// transform: rotateX(-30deg) rotateY(-45deg) ;
+	// translateY(var(--sideY) px)
+
 
 	// .side_box
 	&_box {
@@ -94,10 +114,38 @@
 			background-color: #ECECEC;
 			transform: rotateY(90deg) translateZ(10px);
 		}
+
+
+
 	}
 
 
 
+
+}
+
+.side1 {
+
+	// .side1_box
+	&_box {
+		position: relative;
+		width: 100px;
+		height: 100px;
+
+		&._top {
+			background-color: #aaa;
+			transform-style: preserve-3d;
+			transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+		}
+
+		&._left {
+			background-color: #cac;
+		}
+
+		&._right {
+			background-color: #aac;
+		}
+	}
 
 }
 
