@@ -43,22 +43,21 @@
 
 	// .mappanel_box
 	&_box {
-		@include d_f(flex, center, none);
-		flex-wrap: wrap;
+		// @include d_f(flex, center, none);
+		// flex-wrap: wrap;
 		// align-content: center;
-		flex-direction: column;
+		// flex-direction: column;
 		width: 100%;
 		height: 100%;
-		padding-top: 50px;;
-		padding-left: 50px;
-		transform-style: preserve-3d;
+		padding: 30px;
+		// transform-style: preserve-3d;
 		// transform: rotateX(-30deg) rotateY(-45deg);
 
 		// .mappanel_box_row
 		&_row {
 			position: relative;
 			@include d_f(inline-flex, none, center);
-			height: 90px;
+			height: 75px;
 			// width: 100%;
 			// transform-style: preserve-3d;
 		}
@@ -104,24 +103,24 @@
 
 		&._left,
 		&._right {
-			height: 30px;
+			height: 20px;
 		}
 
 		&._top {
-			// background-color: #FFFFFF;
-			background-color: blue;
+			background-color: #FFFFFF;
+			// background-color: blue;
 			transform: rotateX(90deg) translateZ(50px);
 		}
 
 		&._left {
-			// background-color: #ECECEC;
-			background-color: red;
+			background-color: #ECECEC;
+			// background-color: red;
 			transform: translateZ(50px);
 		}
 
 		&._right {
-			// background-color: #ECECEC;
-			background-color: yellow;
+			background-color: #ECECEC;
+			// background-color: yellow;	
 			transform: rotateY(90deg) translateZ(10px);
 		}
 
