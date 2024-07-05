@@ -19,8 +19,7 @@ export default {
 	created() {
 
 	},
-	mounted() {
-		
+	mounted() {		
 		this.pointData.forEach(item => {
 			this.drawPrism(item.x, item.y, item.w, item.h, item.d);
 		});
