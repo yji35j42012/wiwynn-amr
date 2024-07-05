@@ -11,7 +11,8 @@ export default {
 	data() {
 		return {
 			pointData: [
-				{ x1: 900, y1: 100, x2: 80, y2: 75, text: '巡邏點1' },
+				{ x: 100, y: 200, w: 100, h: 20, d: 80, text: '物件1' },
+				{ x: 225, y: 182, w: 100, h: 20, d: 80, text: '物件2' },
 			],
 		}
 	},
@@ -19,7 +20,10 @@ export default {
 
 	},
 	mounted() {
-		this.drawPrism();
+		
+		this.pointData.forEach(item => {
+			this.drawPrism(item.x, item.y, item.w, item.h, item.d);
+		});
 	},
 	methods: {
 		drawLine(ctx, x1, y1, x2, y2) {
@@ -28,10 +32,11 @@ export default {
 			ctx.lineTo(x2, y2);
 			ctx.stroke();
 		},
-		drawPrism() {
+		drawPrism(xn, yn, w, h, d) {
 			const canvas=this.$refs.prismCanvas;
 			const ctx=canvas.getContext('2d');
-			const x=200, y=200, width=100, height=20, depth=80;
+			const x=xn, y=yn, width=w, height=h, depth=d;
+
 			const skew=depth/6;
 			const offset=depth/2;
 
