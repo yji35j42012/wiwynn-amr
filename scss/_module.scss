@@ -13,6 +13,87 @@
 	box-shadow: 0px 4px 15px 0px #0000001A;
 }
 
+.normal_btn {
+	flex: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 35px;
+	background-color: #2E7FDF;
+	border: 1px solid #E5E5E5;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	text-align: left;
+	border-radius: 4px;
+	@extend %hand;
+	@extend %transition;
+
+	&._report::before {
+		content: "";
+		display: block;
+		width: 16px;
+		height: 16px;
+		margin-right: 6px;
+		background: url('../images/icon_report.svg')no-repeat center/contain;
+	}
+
+	@include hoverHandler {
+		opacity: .8;
+	}
+}
+
+.normal_sel {
+	flex: none;
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 35px;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 4px;
+		display: block;
+		width: 24px;
+		height: 24px;
+		margin: auto;
+		background: url('../images/icon_arr_down.svg')no-repeat center/contain;
+	}
+
+	.normal_btn+& {
+		margin-top: 6px;
+	}
+
+
+	&>select {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 10px;
+		background-color: transparent;
+		@extend %hand;
+		@extend %transition;
+		background-color: #fff;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 14.52px;
+		text-align: left;
+
+		@include hoverHandler {
+			background-color: #E5E5E5;
+		}
+	}
+}
+
 .logo {
 	width: 128px;
 	height: 32px;
@@ -23,16 +104,14 @@
 	@include d_f(flex);
 	width: 100%;
 	height: calc(100% - 60px);
+	padding-left: 0;
+	@extend %transition;
+	&._open{
+		padding-left: 250px;
+	}
 }
 
-.leftpanel {
-	flex: none;
-	// width: 250px;
-	height: 100%;
-	background-color: #F5F5F5;
-	border: 1px solid #E8E8E8;
-	transform: translateX(-100%);
-}
+
 
 .mappanel {
 	// overflow: hidden;

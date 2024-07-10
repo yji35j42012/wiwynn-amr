@@ -11,8 +11,8 @@
 <body>
 	<div id="app" class="wrap">
 		<header-component></header-component>
-		<div class="content">
-			<left-panel></left-panel>
+		<div :class="['content', isLeftShow?'_open':'']">
+			<left-panel @leftpanel-menu="menuHanler"></left-panel>
 			<map-panel></map-panel>
 		</div>
 	</div>
@@ -60,6 +60,7 @@
 		const app=Vue.createApp({
 			data() {
 				return {
+					isLeftShow:false
 				}
 			},
 			components: {
@@ -67,6 +68,11 @@
 				'left-panel': Vue.defineAsyncComponent(() => loadModule('./components/LeftPanel.vue', options)),
 				'map-panel': Vue.defineAsyncComponent(() => loadModule('./components/MapPanel.vue', options)),
 			},
+			methods:{
+				menuHanler(b){
+					this.isLeftShow = b
+				}
+			}
 
 		});
 		// app.use(router)
