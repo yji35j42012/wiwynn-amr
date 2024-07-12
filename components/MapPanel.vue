@@ -25,7 +25,7 @@ export default {
 		return {
 			wd: 110,//同一排 每一個的 位置
 			pointData: [
-				// { x: 1410, y: 780, w: 80, h: 20, d: 60, text: '物件1' },
+				{ x: 730, y: 1050, w: 320, h: 20, d: 255, text: '物件1' },
 
 			],
 		}
@@ -44,15 +44,15 @@ export default {
 				{ x: i*110+370+110, y: 700-35-35*i, w: 80, h: 20, d: 60, text: '物件1' },
 			)
 		}
-		for (var i=0; i<4; i++) {
-			this.pointData.push(
-				{ x: i*110+570, y: 900-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-				{ x: i*110+670, y: 1000-35*i, w: 80, h: 20, d: 60, text: '物件1' },
+		// for (var i=0; i<4; i++) {
+		// 	this.pointData.push(
+		// 		{ x: i*110+570, y: 900-35*i, w: 80, h: 20, d: 60, text: '物件1' },
+		// 		{ x: i*110+670, y: 1000-35*i, w: 80, h: 20, d: 60, text: '物件1' },
 
-				{ x: i*110+1230, y: 900-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-				{ x: i*110+1330, y: 1000-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-			);
-		}
+		// 		{ x: i*110+1230, y: 900-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
+		// 		{ x: i*110+1330, y: 1000-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
+		// 	);
+		// }
 	},
 	mounted() {
 		this.pointData.forEach(item => {
@@ -70,9 +70,9 @@ export default {
 			const canvas=this.$refs.prismCanvas;
 			const ctx=canvas.getContext('2d');
 			const x=xn, y=yn, width=w, height=h, depth=d;
-
-			const skew=depth/2.5;
-			const offset=depth/1.414;
+			console.log('width', width);
+			var skew=depth/2.5;
+			var offset=depth/1.414;
 
 			// Draw front face (as a parallelogram)
 			ctx.strokeStyle='#DCDCDC';
