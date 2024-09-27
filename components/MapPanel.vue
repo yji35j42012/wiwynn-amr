@@ -8,13 +8,56 @@
 	background-color: #EE6362;
 	border-radius: 100%;
 }
+
+.demo {
+	position: absolute;
+	width: calc(100% - 60px);
+}
+
+.well {
+	position: absolute;
+	top: 89px;
+	left: 682px;
+	width: 119px;
+	height: 37px;
+	background-color: #A4ADB5;
+}
+
+.pillar {
+	position: absolute;
+	top: 94px;
+	left: 671px;
+	width: 11px;
+	height: 37px;
+	background-color: #A6B0B8;
+}
+
+.mappanel_box {
+	position: relative;
+	width: 1484px;
+}
+
+.lwell {
+	position: absolute;
+    top: 87px;
+    left: 159px;
+    width: 10px;
+    height: 542px;
+    background-color: #D1D8DE;
+    transform: skew(-23deg, 0deg);
+}
 </style>
 
 <template>
 	<div class="mappanel">
 		<div id="mappanel_box" class="mappanel_box">
-			<canvas ref="prismCanvas" width="1850" height="1100"></canvas>
-			<div class="ball"></div>
+			 <img class="demo" src="/images/dd.png" alt=""> 
+			<!--<img class="demo" src="/images/tttt.stl" alt="">-->
+			<div class="well"></div>
+			<div class="pillar"></div>
+			<div class="lwell"></div>
+			<!-- <canvas ref="prismCanvas" width="1850" height="1100"></canvas> -->
+			<!-- <div class="ball"></div> -->
 		</div>
 	</div>
 </template>
@@ -26,93 +69,15 @@ export default {
 			wd: 110,//同一排 每一個的 位置
 			pointData: [
 				{ x: 730, y: 1050, w: 320, h: 20, d: 255, text: '物件1' },
-
 			],
 		}
 	},
 	created() {
-		for (var i=0; i<10; i++) {
-			this.pointData.push(
-				{ x: i*110+70, y: 400-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-				{ x: i*110+170, y: 500-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-				{ x: i*110+470, y: 800-35*i, w: 80, h: 20, d: 60, text: '物件1' }
-			)
-		}
-		for (var i=0; i<9; i++) {
-			this.pointData.push(
-				{ x: i*110+270+110, y: 600-35-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-				{ x: i*110+370+110, y: 700-35-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-			)
-		}
-		// for (var i=0; i<4; i++) {
-		// 	this.pointData.push(
-		// 		{ x: i*110+570, y: 900-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-		// 		{ x: i*110+670, y: 1000-35*i, w: 80, h: 20, d: 60, text: '物件1' },
 
-		// 		{ x: i*110+1230, y: 900-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-		// 		{ x: i*110+1330, y: 1000-210-35*i, w: 80, h: 20, d: 60, text: '物件1' },
-		// 	);
-		// }
 	},
 	mounted() {
-		this.pointData.forEach(item => {
-			this.drawPrism(item.x, item.y, item.w, item.h, item.d);
-		});
 	},
 	methods: {
-		drawLine(ctx, x1, y1, x2, y2) {
-			ctx.beginPath();
-			ctx.moveTo(x1, y1);
-			ctx.lineTo(x2, y2);
-			ctx.stroke();
-		},
-		drawPrism(xn, yn, w, h, d) {
-			const canvas=this.$refs.prismCanvas;
-			const ctx=canvas.getContext('2d');
-			const x=xn, y=yn, width=w, height=h, depth=d;
-			console.log('width', width);
-			var skew=depth/2.5;
-			var offset=depth/1.414;
-
-			// Draw front face (as a parallelogram)
-			ctx.strokeStyle='#DCDCDC';
-			ctx.fillStyle='#ECECEC';
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x+width, y-skew);
-			ctx.lineTo(x+width, y+height-skew);
-			ctx.lineTo(x, y+height);
-			ctx.closePath();
-			ctx.fill();
-			ctx.stroke();
-
-			// Draw top face
-			ctx.fillStyle='#ffffff';
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x-offset, y-offset);
-			ctx.lineTo(x+width-offset, y-offset-skew);
-			ctx.lineTo(x+width, y-skew);
-			ctx.closePath();
-			ctx.fill();
-			ctx.stroke();
-
-			// Draw left face
-			ctx.fillStyle='#ECECEC';
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x-offset, y-offset);
-			ctx.lineTo(x-offset, y+height-offset);
-			ctx.lineTo(x, y+height);
-			ctx.closePath();
-			ctx.fill();
-			ctx.stroke();
-
-			// Draw edges
-			this.drawLine(ctx, x, y, x-offset, y-offset);
-			this.drawLine(ctx, x, y+height, x-offset, y+height-offset);
-			this.drawLine(ctx, x+width, y-skew, x+width-offset, y-offset-skew);
-		}
 	}
 };
 </script>

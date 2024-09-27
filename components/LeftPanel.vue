@@ -25,7 +25,6 @@
 					</div>
 				</li>
 			</template>
-
 		</ul>
 		<button :class="['leftpanel_btn', isLeftOpen ? '_open' : '_close']" @click="leftpanel_btn"></button>
 	</div>
